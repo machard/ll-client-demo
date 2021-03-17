@@ -29,14 +29,14 @@ export default class Transport {
   };
 
   send = (url, params) => {
-    const id = uuidv4();
-    window.parent.postMessage({
-      id,
-      url,
-      params: JSON.parse(JSON.stringify(params)),
-      from: "LedgerLiveClient"
-    }, "*");
     return new Promise(resolve => {
+      const id = uuidv4();
+      window.parent.postMessage({
+        id,
+        url,
+        params: JSON.parse(JSON.stringify(params)),
+        from: "LedgerLiveClient"
+      }, "*");
       this.handlers[id] = resolve;
     });
   };
