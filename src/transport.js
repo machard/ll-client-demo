@@ -33,7 +33,8 @@ export default class Transport {
     window.parent.postMessage({
       id,
       url,
-      params: JSON.parse(JSON.stringify(params))
+      params: JSON.parse(JSON.stringify(params)),
+      from: "LedgerLiveClient"
     }, "*");
     return new Promise(resolve => {
       this.handlers[id] = resolve;
