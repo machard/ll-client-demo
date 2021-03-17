@@ -1,5 +1,26 @@
 {
+  "scripts": {
+    "build-demo": "cd example && webpack",
+    "start-demo": "cd example && webpack-dev-server --open"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/preset-env": "^7.13.10",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^1.0.1",
+    "copy-webpack-plugin": "^4.6.0",
+    "css-loader": "^2.1.0",
+    "html-webpack-plugin": "^3.2.0",
+    "json-loader": "^0.5.7",
+    "style-loader": "^0.23.1",
+    "swagger-ui": "^3.45.0",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.1.14",
+    "yaml-loader": "^0.5.0"
+  },
   "dependencies": {
-    "swagger-ui": "^3.45.0"
+    "uuid": "^8.3.2"
   }
 }
