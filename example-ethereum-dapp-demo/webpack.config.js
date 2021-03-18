@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const outputPath = path.resolve(__dirname, '..', 'dist', 'ethereum-dapp-browser');
+const outputPath = path.resolve(__dirname, '..', 'dist', 'ethereum-dapp-demo');
 
 module.exports = {
   mode: 'development',
