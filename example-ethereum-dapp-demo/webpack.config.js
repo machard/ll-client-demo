@@ -18,7 +18,14 @@ module.exports = {
         exclude: /node_modules/,
         options: {
           presets: [
-            "@babel/preset-env",
+            [
+              "@babel/preset-env",
+              {
+                "targets": {
+                  "node": "10"
+                }
+              }
+            ],
           ],
           plugins: [
             "@babel/plugin-proposal-class-properties"
