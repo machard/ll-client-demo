@@ -298,7 +298,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _src_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../src/index */ \"../src/index.js\");\n/* harmony import */ var _src_transport__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../src/transport */ \"../src/transport.js\");\n\n\nvar transport = new _src_transport__WEBPACK_IMPORTED_MODULE_1__[\"default\"]();\nwindow.ledgerlive = Object(_src_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(transport);\ntransport.connect();\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _src_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../src/index */ \"../src/index.js\");\n/* harmony import */ var _src_transport__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../src/transport */ \"../src/transport.js\");\n\n\nvar transport = new _src_transport__WEBPACK_IMPORTED_MODULE_1__[\"default\"]();\nwindow.ledgerlive = Object(_src_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(transport);\ntransport.connect();\nvar iframe = document.createElement('iframe');\niframe.style.height = \"100%\";\niframe.style.width = \"100%\";\niframe.src = \"http://app.aave.com\";\n\niframe.onload = function () {\n  iframe.contentWindow.ethereum = {\n    send: function send() {\n      return alert(\"coucou\");\n    }\n  };\n};\n\ndocument.body.appendChild(iframe);\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
