@@ -1,7 +1,10 @@
 {
   "scripts": {
-    "build-demo": "cd example && webpack",
-    "start-demo": "cd example && webpack-dev-server --open"
+    "build-api-sandbox": "cd example-api-sandbox && webpack",
+    "start-api-sandbox": "cd example-api-sandbox && webpack-dev-server --open",
+    "build-ethereum-dapp-browser": "cd example-ethereum-dapp-browser && webpack",
+    "start-ethereum-dapp-browser": "cd example-ethereum-dapp-browser && webpack-dev-server --open",
+    "build": "yarn build-api-sandbox && yarn build-ethereum-dapp-browser"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
