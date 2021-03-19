@@ -344,27 +344,27 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _val
 
 /***/ }),
 
-/***/ "../src/index.js":
-/*!***********************!*\
-  !*** ../src/index.js ***!
-  \***********************/
+/***/ "../src/client/index.js":
+/*!******************************!*\
+  !*** ../src/client/index.js ***!
+  \******************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (transport) {\n  return function (url, data) {\n    return transport.send(url, data);\n  };\n});\n\n//# sourceURL=webpack:///../src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (transport) {\n  return function (url, data) {\n    return transport.send(url, data);\n  };\n});\n\n//# sourceURL=webpack:///../src/client/index.js?");
 
 /***/ }),
 
-/***/ "../src/transport.js":
-/*!***************************!*\
-  !*** ../src/transport.js ***!
-  \***************************/
+/***/ "../src/client/transport.js":
+/*!**********************************!*\
+  !*** ../src/client/transport.js ***!
+  \**********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Transport; });\n/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! uuid */ \"../node_modules/uuid/dist/esm-browser/index.js\");\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\n\n\nvar Transport = function Transport() {\n  var _this = this;\n\n  _classCallCheck(this, Transport);\n\n  _defineProperty(this, \"handlers\", {});\n\n  _defineProperty(this, \"connect\", function () {\n    window.addEventListener('message', _this.handler);\n  });\n\n  _defineProperty(this, \"disconnect\", function () {\n    window.removeEventListener('message', _this.handler);\n  });\n\n  _defineProperty(this, \"handler\", function (message) {\n    var handler = _this.handlers[message.data.id];\n\n    if (handler && message.data.from === \"LedgerLive\") {\n      delete _this.handlers[message.data.id];\n      handler(new Response(new Blob([JSON.stringify(message.data.body, null, 2)], {\n        type: 'application/json'\n      }), {\n        status: message.data.status\n      }));\n    }\n  });\n\n  _defineProperty(this, \"send\", function (url, params) {\n    return new Promise(function (resolve) {\n      var id = Object(uuid__WEBPACK_IMPORTED_MODULE_0__[\"v4\"])();\n      window.parent.postMessage({\n        id: id,\n        url: url,\n        params: JSON.parse(JSON.stringify(params)),\n        from: \"LedgerLiveClient\"\n      }, \"*\");\n      _this.handlers[id] = resolve;\n    });\n  });\n};\n\n\n;\n\n//# sourceURL=webpack:///../src/transport.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Transport; });\n/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! uuid */ \"../node_modules/uuid/dist/esm-browser/index.js\");\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\n\n\nvar Transport = function Transport() {\n  var _this = this;\n\n  _classCallCheck(this, Transport);\n\n  _defineProperty(this, \"handlers\", {});\n\n  _defineProperty(this, \"connect\", function () {\n    window.addEventListener('message', _this.handler);\n  });\n\n  _defineProperty(this, \"disconnect\", function () {\n    window.removeEventListener('message', _this.handler);\n  });\n\n  _defineProperty(this, \"handler\", function (message) {\n    var handler = _this.handlers[message.data.id];\n\n    if (handler && message.data.from === \"LedgerLive\") {\n      delete _this.handlers[message.data.id];\n      handler(new Response(new Blob([JSON.stringify(message.data.body, null, 2)], {\n        type: 'application/json'\n      }), {\n        status: message.data.status\n      }));\n    }\n  });\n\n  _defineProperty(this, \"send\", function (url, params) {\n    return new Promise(function (resolve) {\n      var id = Object(uuid__WEBPACK_IMPORTED_MODULE_0__[\"v4\"])();\n      window.parent.postMessage({\n        id: id,\n        url: url,\n        params: JSON.parse(JSON.stringify(params)),\n        from: \"LedgerLiveClient\"\n      }, \"*\");\n      _this.handlers[id] = resolve;\n    });\n  });\n};\n\n\n;\n\n//# sourceURL=webpack:///../src/client/transport.js?");
 
 /***/ }),
 
@@ -376,7 +376,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var swagger_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swagger-ui */ \"../node_modules/swagger-ui/dist/swagger-ui-es-bundle.js\");\n/* harmony import */ var swagger_ui__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(swagger_ui__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var swagger_ui_dist_swagger_ui_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swagger-ui/dist/swagger-ui.css */ \"../node_modules/swagger-ui/dist/swagger-ui.css\");\n/* harmony import */ var swagger_ui_dist_swagger_ui_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(swagger_ui_dist_swagger_ui_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _src_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../src/index */ \"../src/index.js\");\n/* harmony import */ var _src_transport__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../src/transport */ \"../src/transport.js\");\n\n\n\n\nvar transport = new _src_transport__WEBPACK_IMPORTED_MODULE_3__[\"default\"]();\nwindow.ledgerlive = Object(_src_index__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(transport);\ntransport.connect(); // replace original fetch used by swagger by ledgerlive api\n\nwindow.fetch = window.ledgerlive;\nvar ui = swagger_ui__WEBPACK_IMPORTED_MODULE_0___default()({\n  url: \"/spec.json\",\n  dom_id: '#swagger'\n});\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var swagger_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swagger-ui */ \"../node_modules/swagger-ui/dist/swagger-ui-es-bundle.js\");\n/* harmony import */ var swagger_ui__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(swagger_ui__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var swagger_ui_dist_swagger_ui_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swagger-ui/dist/swagger-ui.css */ \"../node_modules/swagger-ui/dist/swagger-ui.css\");\n/* harmony import */ var swagger_ui_dist_swagger_ui_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(swagger_ui_dist_swagger_ui_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _src_client_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../src/client/index */ \"../src/client/index.js\");\n/* harmony import */ var _src_client_transport__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../src/client/transport */ \"../src/client/transport.js\");\n\n\n\n\nvar transport = new _src_client_transport__WEBPACK_IMPORTED_MODULE_3__[\"default\"]();\nwindow.ledgerlive = Object(_src_client_index__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(transport);\ntransport.connect(); // replace original fetch used by swagger by ledgerlive api\n\nwindow.fetch = window.ledgerlive;\nvar ui = swagger_ui__WEBPACK_IMPORTED_MODULE_0___default()({\n  url: \"/spec.json\",\n  dom_id: '#swagger'\n});\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
