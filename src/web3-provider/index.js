@@ -40,9 +40,9 @@ engine.addProvider(new VmSubprovider())
 // id mgmt
 engine.addProvider(new HookedWalletSubprovider({
   getAccounts: async (cb) => {
-    const res = await window.ledgerlive("/v0.0.1/account", { method: "GET" } );
+    const res = await ledgerlive("/v0.0.1/account", { method: "GET" } );
     const account = await res.json();
-    cb(null, [account]);
+    cb(null, [account.freshAddress]);
   },
   processTransaction: async (tx, cb) => {
     console.log(tx);
@@ -50,11 +50,52 @@ engine.addProvider(new HookedWalletSubprovider({
   },
 }));
 
+engine.addProvider({
+  handleRequest: async (payload, next, end) => {
+    console.log("payload", payload);
+    switch(payload.method) {
+      case "eth_requestAccounts":
+        const res = await ledgerlive("/v0.0.1/account", { method: "GET" } );
+        const account = await res.json();
+        end(null, [account.freshAddress]);
+        break;
+      case "net_version":
+      case "eth_chainId":
+        end(null, 1);
+        break;
+      default:
+        next();
+        break;
+    }
+  },
+  setEngine: (_) => _,
+});
+
 // data source
 engine.addProvider(new RpcSubprovider({
   rpcUrl: "https://mainnet.infura.io/v3/c5f470b29f9946feb13a80a8a4f8faf4",
-}))
+}));
 
 engine.start();
+
+engine.enable = () => {
+  return Promise.resolve();
+};
+
+engine.send = (payload, cb) => {
+  console.log(payload, cb);
+  if (cb) {
+    engine.sendAsync({ method: payload }, callback);
+  } else {
+    return new Promise((resolve, reject) => {
+      engine.sendAsync({ method: payload }, (err, response) => {
+        if (err) {
+          return reject(err);
+        }
+        resolve(response);
+      })
+    });
+  }
+};
 
 export default engine;
