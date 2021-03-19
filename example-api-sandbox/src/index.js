@@ -1,7 +1,7 @@
 import SwaggerUI from 'swagger-ui'
 import 'swagger-ui/dist/swagger-ui.css';
-import makeLedgerlive from "../../src/index";
-import Transport from "../../src/transport";
+import makeLedgerlive from "../../src/client/index";
+import Transport from "../../src/client/transport";
 
 const transport = new Transport();
 window.ledgerlive = makeLedgerlive(transport);

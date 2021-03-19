@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const outputPath = path.resolve(__dirname, '..', 'dist', 'ethereum-dapp-demo');
+const outputPath = path.resolve(__dirname, '..', 'dist', 'ethereum-dapp-browser');
 
 module.exports = {
   target: "web",
@@ -22,14 +22,7 @@ module.exports = {
         exclude: /node_modules/,
         options: {
           presets: [
-            [
-              "@babel/preset-env",
-              {
-                "targets": {
-                  "node": "10"
-                }
-              }
-            ],
+            "@babel/preset-env",
           ],
           plugins: [
             "@babel/plugin-proposal-class-properties"

@@ -1,17 +1,8 @@
 "use strict";
 
-import makeLedgerlive from "../../src/index";
-import Transport from "../../src/transport";
+import engine from "../../src/web3-provider";
 
-const transport = new Transport();
-window.ledgerlive = makeLedgerlive(transport);
-transport.connect();
+console.log(engine);
 
 // todo implement a real ethereum provider
-window.ethereum = {
-  enable: async () => {
-    const res = await window.ledgerlive("/v0.0.1/account", { method: "GET" } );
-    const account = await res.json();
-    alert(account.freshAddress);
-  }
-};
+window.ethereum = engine;
