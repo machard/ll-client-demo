@@ -6,6 +6,6 @@
 </head>
 <body style="height:100%">
   Ethereum dapp demo<br /><br />
-  <button onclick="window.ethereum.sendAsync({ method: 'eth_accounts' }, (err, { result }) => alert(result[0]))">Connect With Ledger Live</button>
+  <button onclick="window.ethereum.sendAsync({ method: 'eth_accounts' }, (err, { result }) => {document.querySelector("button").innerHTML = result[0]})">Connect With Ledger Live</button>
 <script type="text/javascript" src="app.bundle.js"></script></body>
 </html>
